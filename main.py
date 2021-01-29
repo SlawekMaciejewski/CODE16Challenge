@@ -10,14 +10,17 @@ COLOR_PALETTE = [(201, 164, 112), (239, 246, 241), (152, 75, 50), (221, 201, 138
 screen = Screen()
 screen.colormode(255)
 paint = Turtle()
+paint.penup()
+paint.hideturtle()
+paint.setposition(-250, -250)
 
-
-def draw_row():
-    for _ in range(10):
-        paint.dot(20, random.choice(COLOR_PALETTE))
+for dot_counter in range(1, 101):
+    paint.dot(20, random.choice(COLOR_PALETTE))
+    paint.forward(50)
+    if dot_counter % 10 == 0:
+        paint.setheading(90)
         paint.forward(50)
-
-
-draw_row()
+        paint.setheading(0)
+        paint.goto(-250, paint.ycor())
 
 screen.exitonclick()
